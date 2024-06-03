@@ -231,6 +231,16 @@
 <div class="mute-button" onclick="toggleMute()">
     <i id="volumeIcon" class="fas fa-volume-up"></i>
 </div>
+    
+<script>
+        let music = new Audio();
+        music.src = "https://raw.githubusercontent.com/bigmike1232/extortsite/main/Song4.mp3";
+
+        music.addEventListener("canplaythrough", () => {
+            music.play();
+        });
+</script>
+
 <script>
 function toggleMute() {
     var music = document.getElementById("bg-music");
