@@ -187,7 +187,7 @@
                 left: 50%;
                 top: 125px;
                 transform: translateX(-50%);
-            width: auto;
+                width: auto;
             }
 
             .github, .discord, .website, .cashapp-link, .paypal-link, .paypal-link:hover, .cashapp-link:hover {
@@ -251,36 +251,33 @@
     </div>
 
     <audio autoplay="" loop="" id="bg-music">
-        <source src="Song4.mp3">
+        <source src="https://raw.githubusercontent.com/bigmike1232/extortsite/main/Song4.mp3">
     </audio>
 
-
+    <div class="mute-button" onclick="toggleMute()">
+        <i id="volumeIcon" class="fas fa-volume-up"></i>
+    </div>
 
     <script>
-        let music = new Audio();
-        music.src = "https://raw.githubusercontent.com/bigmike1232/extortsite/main/Song4.mp3";
-
         function removeOverlay() {
             document.getElementById("overlay").style.display = "none";
             document.querySelector(".background-video").style.display = "block"; // Show the background video
         }
 
         function playMusic() {
+            var music = document.getElementById("bg-music");
             music.play().catch(error => {
                 console.error("Error playing audio:", error);
             });
         }
-    </script>
-<div class="mute-button" onclick="toggleMute()">
-        <i id="volumeIcon" class="fas fa-volume-up"></i>
-</div>
-    <script>
+
         function toggleMute() {
             var music = document.getElementById("bg-music");
             var volumeIcon = document.getElementById("volumeIcon");
 
             if (music.muted) {
                 music.muted = false;
+                volumeIcon.class
                 volumeIcon.classList.remove("fa-volume-xmark");
                 volumeIcon.classList.add("fa-volume-up");
             } else {
@@ -289,15 +286,12 @@
                 volumeIcon.classList.add("fa-volume-xmark");
             }
         }
-    </script>
 
-    <script>
         document.addEventListener('DOMContentLoaded', function () {
             animateTitle();
         });
 
         function animateTitle() {
-            const title = document.title;
             const originalTitle = "EXO OWNS YOU";
             let index = 0;
 
