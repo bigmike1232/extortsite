@@ -235,7 +235,7 @@
 
     <div class="profile-card">
         <div class="profile-circle"></div>
-        <div class="name" style="position: absolute; border-radius: 10px; margin-left: 0px; margin-top:10px;">Exodus</div>
+        <div class="name">Exodus</div>
         <h3 class="typewriter-text" id="typewriter">Owner</h3>
         <img src="https://discord.c99.nl/widget/theme-4/224246165904818176.png" style="position: absolute; border-radius: 10px; margin-left: -80px; margin-top: 30px;">
         <a href="https://discord.gg/3bGWNWuSQj" class="discord"><i class="fa-brands fa-discord"></i></a>
@@ -243,7 +243,8 @@
         <a href="https://www.paypal.me/Tias863" class="paypal-link"><i class="fa-brands fa-paypal"></i></a>
         <a href="https://cash.app/$AJames071123" class="cashapp-link"><i class="fa-solid fa-dollar-sign"></i></a>
     </div>
-
+    
+    
     <div class="video-background">
         <video id="bg-video" autoplay muted loop class="background-video">
             <source src="b3.mp4" type="video/mp4">
@@ -259,6 +260,38 @@
     <div class="mute-button" onclick="toggleMute()">
         <i id="volumeIcon" class="fas fa-volume-up"></i>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const textElement = document.getElementById('typewriter');
+            const texts = ['dasende.xyz', 'Owner', 'Developer'];
+            let index = 0;
+            let isDeleting = false;
+            let speed = 150;
+
+            function type() {
+                const currentText = texts[index];
+                if (isDeleting) {
+                    textElement.textContent = currentText.substring(0, textElement.textContent.length - 1);
+                } else {
+                    textElement.textContent = currentText.substring(0, textElement.textContent.length + 1);
+                }
+
+                if (!isDeleting && textElement.textContent === currentText) {
+                    isDeleting = true;
+                    speed = 300; // Pause before start deleting
+                } else if (isDeleting && textElement.textContent === '') {
+                    isDeleting = false;
+                    index = (index + 1) % texts.length;
+                    speed = 100; // Pause before start typing the next word
+                }
+
+                setTimeout(type, speed);
+            }
+
+            type();
+        });
+    </script>
+
     <script>
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
