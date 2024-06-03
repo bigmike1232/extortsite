@@ -254,23 +254,28 @@
         <source src="https://raw.githubusercontent.com/bigmike1232/extortsite/main/Song4.mp3">
     </audio>
 
+
     <div class="mute-button" onclick="toggleMute()">
         <i id="volumeIcon" class="fas fa-volume-up"></i>
     </div>
 
     <script>
-        function removeOverlay() {
-            document.getElementById("overlay").style.display = "none";
-            document.querySelector(".background-video").style.display = "block"; // Show the background video
-        }
+    function playMusic() {
+        var music = document.getElementById("bg-music");
+        music.play().catch(error => {
+            console.error("Error playing audio:", error);
+        });
+    }
 
-        function playMusic() {
-            var music = document.getElementById("bg-music");
-            music.play().catch(error => {
-                console.error("Error playing audio:", error);
-            });
-        }
+    function removeOverlay() {
+        document.getElementById("overlay").style.display = "none";
+        document.querySelector(".background-video").style.display = "block"; // Show the background video
+        playMusic(); // Start playing music
+    }
+    </script>
+    
 
+    <script>
         function toggleMute() {
             var music = document.getElementById("bg-music");
             var volumeIcon = document.getElementById("volumeIcon");
