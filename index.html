@@ -260,6 +260,16 @@
     </div>
 
     <script>
+    function removeOverlay() {
+        document.getElementById("overlay").style.display = "none";
+        var video = document.querySelector(".background-video");
+        video.style.display = "block"; // Show the background video
+        video.play().catch(error => {
+            console.error("Error playing video:", error);
+        });
+        playMusic(); // Start playing music
+    }
+
     function playMusic() {
         var music = document.getElementById("bg-music");
         music.play().catch(error => {
@@ -267,44 +277,34 @@
         });
     }
 
-    function removeOverlay() {
-        document.getElementById("overlay").style.display = "none";
-        document.querySelector(".background-video").style.display = "block"; // Show the background video
-        playMusic(); // Start playing music
+    function toggleMute() {
+        var music = document.getElementById("bg-music");
+        var volumeIcon = document.getElementById("volumeIcon");
+
+        if (music.muted) {
+            music.muted = false;
+            volumeIcon.classList.remove("fa-volume-xmark");
+            volumeIcon.classList.add("fa-volume-up");
+        } else {
+            music.muted = true;
+            volumeIcon.classList.remove("fa-volume-up");
+            volumeIcon.classList.add("fa-volume-xmark");
+        }
     }
-    </script>
-    
 
-    <script>
-        function toggleMute() {
-            var music = document.getElementById("bg-music");
-            var volumeIcon = document.getElementById("volumeIcon");
+    document.addEventListener('DOMContentLoaded', function () {
+        animateTitle();
+    });
 
-            if (music.muted) {
-                music.muted = false;
-               
-                volumeIcon.classList.remove("fa-volume-xmark");
-                volumeIcon.classList.add("fa-volume-up");
-            } else {
-                music.muted = true;
-                volumeIcon.classList.remove("fa-volume-up");
-                volumeIcon.classList.add("fa-volume-xmark");
-            }
-        }
+    function animateTitle() {
+        const originalTitle = "EXO OWNS YOU";
+        let index = 0;
 
-        document.addEventListener('DOMContentLoaded', function () {
-            animateTitle();
-        });
-
-        function animateTitle() {
-            const originalTitle = "EXO OWNS YOU";
-            let index = 0;
-
-            setInterval(function () {
-                index = (index + 1) % (originalTitle.length + 4);
-                document.title = originalTitle.substring(0, index);
-            }, 300);
-        }
-    </script>
+        setInterval(function () {
+            index = (index + 1) % (originalTitle.length + 4);
+            document.title = originalTitle.substring(0, index);
+        }, 300);
+    }
+</script>
 </body>
 </html>
