@@ -261,12 +261,15 @@
     <script>
         function removeOverlay() {
             document.getElementById("overlay").style.display = "none";
+            var video = document.getElementById("bg-video");
+            video.style.display = "show"; // Show the background video
         }
 
-        function playMusic() {
+        function playMedia() {
+            var video = document.getElementById("bg-video");
             var music = document.getElementById("bg-music");
             music.play().catch(error => {
-                console.error("console.error("Error playing audio:", error);
+                console.error("Error playing audio:", error);
             });
         }
 
