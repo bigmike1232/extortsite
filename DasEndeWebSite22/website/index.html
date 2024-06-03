@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="moon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .profile-card {
+            background-color: #322f2f;
+            padding: 20px;
+            border: 1px solid #404040;
+            border-radius: 20px;
+            width: 400px;
+            height: 400px;
+            font-family: 'Minecraft', sans-serif;
+            margin: 100px auto;
+            background-color: rgba(17, 17, 17, 0.8);
+            position: relative;
+            text-align: center;
+        }
+
+        .profile-circle {
+            position: absolute;
+            top: 1%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-image: url('exodus.png');
+            background-size: cover;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 24px;
+            color: rgb(191, 191, 191);
+            position: absolute;
+            bottom: 200px;
+            font-family: 'Philly Sans', sans-serif;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 26%;
+            font-size: 50px;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .github, .discord, .website {
+            font-size: 50px;
+            margin-right: 20px;
+            transition: font-size 0.3s;
+            display: inline-block;
+            margin-top: 120px;
+        }
+
+        .website:hover {
+            color: rgb(137, 32, 16);
+            font-size: 60px;
+        }
+
+        .website {
+            color: rgb(187, 41, 15);
+        }
+
+        .discord:hover {
+            color: rgb(50, 41, 135);
+            font-size: 60px;
+        }
+
+        .github:hover {
+            color: rgb(78, 9, 88);
+            font-size: 60px;
+        }
+
+        .discord {
+            color: blue;
+        }
+
+        .song {
+            font-style: italic;
+        }
+
+        .discord-handle {
+            font-family: monospace;
+        }
+
+        body {
+            background-color: black;
+            background-image: url('');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            cursor: url('cursor.cur'), auto;
+            overflow-x: hidden;
+        }
+
+        .typewriter-text {
+            color: #ffffff;
+            font-size: 36px;
+            margin: 160px auto 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .mute-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgb(0, 0, 0);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .mute-button i {
+            font-size: 20px;
+            color: red;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                width: 90%;
+                height: auto;
+                margin: 160px auto 20px; 
+                padding: 20px;
+            }
+
+            .profile-circle {
+                width: 140px;
+                height: 140px;
+            }
+
+            .name {
+                font-size: 100px;
+                left: 50%;
+                top: 125px;
+                transform: translateX(-50%);
+                width: auto;
+            }
+
+            .github, .discord, .website {
+                font-size: 40px;
+                margin-top: 20px;
+                margin-right: 10px;
+            }
+
+            .typewriter-text {
+                font-size: 24px;
+                margin-top: 220px;
+                text-align: center;
+                position: relative;
+            }
+
+            img {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile-card">
+    <div class="profile-circle"></div>
+    <div class="name">Exodus</div>
+    <h3 class="typewriter-text" id="typewriter">Owner</h3>
+    <img src="https://discord.c99.nl/widget/theme-4/224246165904818176.png" style="position: absolute; border-radius: 10px; margin-left: -90px; margin-top: 30px;">
+    <a href="https://discord.com/users/224246165904818176" class="discord"><i class="fa-brands fa-discord"></i></a>
+    <a href="https://github.com/bigmike1232" class="github"><i class="fa-brands fa-github"></i></a>
+    <a href="https://firearms.mysellix.io" class="website"><i class="fa-brands fa-chrome"></i></a>
+</div>
+
+<div class="video-background">
+    <video autoplay muted loop class="background-video">
+        <source src="b3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+</div>
+<audio autoplay="" loop="" id="bg-music">
+    <source src="song1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<div class="mute-button" onclick="toggleMute()">
+    <i id="volumeIcon" class="fas fa-volume-up"></i>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        animateTitle();
+    });
+
+    function animateTitle() {
+        const title = document.title;
+        const originalTitle = "EXO OWNS YOU";
+        let index = 0;
+
+        setInterval(function () {
+            index = (index + 1) % (originalTitle.length + 4);
+            document.title = originalTitle.substring(0, index);
+        }, 300);
+    }
+</script>
+</body>
+</html>
