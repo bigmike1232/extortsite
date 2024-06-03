@@ -201,81 +201,109 @@
                 text-align: center;
                 position: relative;
             }
-    }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .proceed-button {
+            padding: 20px 40px;
+            background-color: #fff;
+            color: #000;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
-<div class="overlay" id="overlay">
-<div class="proceed-button" onclick="removeOverlay(); playMusic()">click me</div>
-</div>
+    <div class="overlay" id="overlay">
+        <div class="proceed-button" onclick="removeOverlay(); playMusic()">click me</div>
+    </div>
 
-<div class="profile-card">
-    <div class="profile-circle"></div>
-    <div class="name" style="position: absolute; border-radius: 10px; margin-left: 0px; margin-top:10px;">Exodus</div>
-    <h3 class="typewriter-text" id="typewriter">Owner</h3>
-    <img src="https://discord.c99.nl/widget/theme-4/224246165904818176.png" style="position: absolute; border-radius: 10px; margin-left: -80px; margin-top: 30px;">
-    <a href="https://discord.gg/3bGWNWuSQj" class="discord"><i class="fa-brands fa-discord"></i></a>
-    <a href="https://github.com/bigmike1232" class="github"><i class="fa-brands fa-github"></i></a>
-    <a href="https://www.paypal.me/Tias863" class="paypal-link"><i class="fa-brands fa-paypal"></i></a>
-    <a href="https://cash.app/$AJames071123" class="cashapp-link"><i class="fa-solid fa-dollar-sign"></i></a>
-</div>
+    <div class="profile-card">
+        <div class="profile-circle"></div>
+        <div class="name" style="position: absolute; border-radius: 10px; margin-left: 0px; margin-top:10px;">Exodus</div>
+        <h3 class="typewriter-text" id="typewriter">Owner</h3>
+        <img src="https://discord.c99.nl/widget/theme-4/224246165904818176.png" style="position: absolute; border-radius: 10px; margin-left: -80px; margin-top: 30px;">
+        <a href="https://discord.gg/3bGWNWuSQj" class="discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://github.com/bigmike1232" class="github"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.paypal.me/Tias863" class="paypal-link"><i class="fa-brands fa-paypal"></i></a>
+        <a href="https://cash.app/$AJames071123" class="cashapp-link"><i class="fa-solid fa-dollar-sign"></i></a>
+    </div>
 
-<div class="video-background">
-    <video autoplay muted loop class="background-video">
-        <source src="b3.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="video-background">
+        <video autoplay muted loop class="background-video">
+            <source src="b3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
-</div>
-</div>
-<audio autoplay="" loop="" id="bg-music">
-    <source src="Song4.mp3">
-</audio>
-<div class="mute-button" onclick="toggleMute()">
-    <i id="volumeIcon" class="fas fa-volume-up"></i>
-</div>
-    
-<script>
+    <audio autoplay="" loop="" id="bg-music">
+        <source src="Song4.mp3">
+    </audio>
+
+    <div class="mute-button" onclick="toggleMute()">
+        <i id="volumeIcon" class="fas fa-volume-up"></i>
+    </div>
+
+    <script>
         let music = new Audio();
         music.src = "https://raw.githubusercontent.com/bigmike1232/extortsite/main/Song4.mp3";
 
-        music.addEventListener("canplaythrough", () => {
-            music.play();
+        function removeOverlay() {
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        function playMusic() {
+            music.play().catch(error => {
+                console.error("Error playing audio:", error);
+            });
+        }
+    </script>
+
+    <script>
+        function toggleMute() {
+            var music = document.getElementById("bg-music");
+            var volumeIcon = document.getElementById("volumeIcon");
+
+            if (music.muted) {
+                music.muted = false;
+                volumeIcon.classList.remove("fa-volume-xmark");
+                volumeIcon.classList.add("fa-volume-up");
+            } else {
+                music.muted = true;
+                volumeIcon.classList.remove("fa-volume-up");
+                volumeIcon.classList.add("fa-volume-xmark");
+            }
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            animateTitle();
         });
-</script>
 
-<script>
-function toggleMute() {
-    var music = document.getElementById("bg-music");
-    var volumeIcon = document.getElementById("volumeIcon");
+        function animateTitle() {
+            const title = document.title;
+            const originalTitle = "EXO OWNS YOU";
+            let index = 0;
 
-    if (music.muted) {
-        music.muted = false;
-        volumeIcon.classList.remove("fa-volume-xmark");
-        volumeIcon.classList.add("fa-volume-up");
-    } else {
-        music.muted = true;
-        volumeIcon.classList.remove("fa-volume-up");
-        volumeIcon.classList.add("fa-volume-xmark");
-    }
-}
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        animateTitle();
-    });
-
-    function animateTitle() {
-        const title = document.title;
-        const originalTitle = "EXO OWNS YOU";
-        let index = 0;
-
-        setInterval(function () {
-            index = (index + 1) % (originalTitle.length + 4);
-            document.title = originalTitle.substring(0, index);
-        }, 300);
-    }
-</script>
+            setInterval(function () {
+                index = (index + 1) % (originalTitle.length + 4);
+                document.title = originalTitle.substring(0, index);
+            }, 300);
+        }
+    </script>
 </body>
 </html>
