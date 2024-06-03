@@ -48,6 +48,7 @@
         }
 
         .background-video {
+            display: none; /* Initially hide the background video */
             position: fixed;
             top: 0;
             left: 0;
@@ -186,7 +187,7 @@
                 left: 50%;
                 top: 125px;
                 transform: translateX(-50%);
-                width: auto;
+            width: auto;
             }
 
             .github, .discord, .website, .cashapp-link, .paypal-link, .paypal-link:hover, .cashapp-link:hover {
@@ -263,6 +264,7 @@
 
         function removeOverlay() {
             document.getElementById("overlay").style.display = "none";
+            document.querySelector(".background-video").style.display = "block"; // Show the background video
         }
 
         function playMusic() {
@@ -302,7 +304,7 @@
             setInterval(function () {
                 index = (index + 1) % (originalTitle.length + 4);
                 document.title = originalTitle.substring(0, index);
-            }, 200);
+            }, 300);
         }
     </script>
 </body>
