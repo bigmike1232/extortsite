@@ -272,7 +272,7 @@
 </head>
 <body>
     <div class="overlay" id="overlay">
-        <div class="proceed-button" onclick="removeOverlay()">click me</div>
+        <div class="proceed-button" onclick="removeOverlay(); playMusic()">click me</div>
     </div>
 
     <div class="profile-card">
@@ -288,7 +288,8 @@
 
     <div class="video-background">
         <video id="bg-video" autoplay muted loop class="background-video">
-            <source src="b3.mp4" type="video/mp4">   
+            <source src="b3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
     </div>
 
@@ -301,8 +302,11 @@
     </div>
 
     <script>
-        function playMedia() {
-            var video = document.getElementById("bg-video");
+        function removeOverlay() {
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        function playMusic() {
             var music = document.getElementById("bg-music");
             music.play().catch(error => {
                 console.error("Error playing audio:", error);
