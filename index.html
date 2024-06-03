@@ -213,7 +213,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 10000; /* Ensure it is above all other elements */
         }
 
         .proceed-button {
@@ -302,7 +302,7 @@
             setInterval(function () {
                 index = (index + 1) % (originalTitle.length + 4);
                 document.title = originalTitle.substring(0, index);
-            }, 300);
+            }, 200);
         }
     </script>
 </body>
