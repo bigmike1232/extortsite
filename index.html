@@ -282,7 +282,7 @@
                 } else if (isDeleting && textElement.textContent === '') {
                     isDeleting = false;
                     index = (index + 1) % texts.length;
-                    speed = 100; // Pause before start typing the next word
+                    speed = 300; // Pause before start typing the next word
                 }
 
                 setTimeout(type, speed);
