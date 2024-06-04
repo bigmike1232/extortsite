@@ -48,6 +48,7 @@
         }
 
         .background-video {
+            display: none; /* Initially hide the background video */
             position: fixed;
             top: 0;
             left: 0;
@@ -55,7 +56,6 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            display: block; /* Ensure the video is always shown */
         }
 
         .status {
@@ -171,52 +171,36 @@
 
         @media (max-width: 768px) {
             .profile-card {
-                display: none;
-                position: relative;
                 width: 90%;
                 height: auto;
-                margin: 160px auto 20px;
+                margin: 160px auto 20px; 
                 padding: 20px;
             }
-            img[style="position: absolute; border-radius: 10px; margin-left: -80px; margin-top: 30px;"] {
-                    display: none;
-            }
+
             .profile-circle {
                 width: 140px;
                 height: 140px;
             }
 
             .name {
-                font-size: 30px;
+                font-size: 40px;
                 left: 50%;
-                top: 150px;
+                top: 125px;
                 transform: translateX(-50%);
                 width: auto;
             }
 
             .github, .discord, .website, .cashapp-link, .paypal-link, .paypal-link:hover, .cashapp-link:hover {
-                font-size: 30px;
+                font-size: 40px;
                 margin-top: 20px;
                 margin-right: 10px;
             }
 
             .typewriter-text {
-                font-size: 20px;
+                font-size: 24px;
                 margin-top: 220px;
                 text-align: center;
                 position: relative;
-            }
-        
-            .background-video {
-                display: none; /* Hide the background video on mobile */
-            }
-            img.discord-widget {
-                width: 80%; /* Adjust the size as needed */
-                margin-left: -40%; /* Center the image horizontally */
-                margin-top: 20px; /* Adjust the margin as needed */
-                position: absolute; /* Position relative to the profile card */
-                top: 30px; /* Adjust as needed */
-                right: 30px; /* Adjust as needed */
             }
         }
 
@@ -253,7 +237,6 @@
         <div class="name">Exodus</div>
         <h3 class="typewriter-text" id="typewriter">Owner</h3>
         <img src="https://discord.c99.nl/widget/theme-4/224246165904818176.png" style="position: absolute; border-radius: 10px; margin-left: -80px; margin-top: 30px;">
-        <img src="https://discord.c99.nl/widget/theme-4/224246165904818176.png" class="discord-widget">
         <a href="https://discord.gg/3bGWNWuSQj" class="discord"><i class="fa-brands fa-discord"></i></a>
         <a href="https://github.com/bigmike1232" class="github"><i class="fa-brands fa-github"></i></a>
         <a href="https://www.paypal.me/Tias863" class="paypal-link"><i class="fa-brands fa-paypal"></i></a>
@@ -270,7 +253,7 @@
     </div>
 
     <audio loop id="bg-music">
-        <source src="https://raw.githubusercontent.com/bigmike1232/extortsite/main/Song4.mp3">
+        <source src="https://raw.githubusercontent.com/bigmike1232/extortsite/main/song1.mp3">
     </audio>
 
     <div class="mute-button" onclick="toggleMute()">
@@ -353,11 +336,7 @@
      <script>
         function removeOverlay() {
             document.getElementById("overlay").style.display = "none";
-            var isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
-
-            if (!isMobile) {
-            document.querySelector(".background-video").style.display = "block"; // Show the background video on non-mobile devices
-             }
+            document.querySelector(".background-video").style.display = "block"; // Show the background video
         }
 
         function playMusic() {
