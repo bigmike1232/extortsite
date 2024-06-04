@@ -48,7 +48,6 @@
         }
 
         .background-video {
-            display: none; /* Initially hide the background video */
             position: fixed;
             top: 0;
             left: 0;
@@ -56,6 +55,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
+            display: block; /* Ensure the video is always shown */
         }
 
         .status {
@@ -173,7 +173,7 @@
             .profile-card {
                 width: 90%;
                 height: auto;
-                margin: 160px auto 20px; 
+                margin: 160px auto 20px;
                 padding: 20px;
             }
 
@@ -183,24 +183,28 @@
             }
 
             .name {
-                font-size: 40px;
+                font-size: 30px;
                 left: 50%;
-                top: 125px;
+                top: 150px;
                 transform: translateX(-50%);
                 width: auto;
             }
 
             .github, .discord, .website, .cashapp-link, .paypal-link, .paypal-link:hover, .cashapp-link:hover {
-                font-size: 40px;
+                font-size: 30px;
                 margin-top: 20px;
                 margin-right: 10px;
             }
 
             .typewriter-text {
-                font-size: 24px;
+                font-size: 20px;
                 margin-top: 220px;
                 text-align: center;
                 position: relative;
+            }
+        
+            .background-video {
+                display: none; /* Hide the background video on mobile */
             }
         }
 
@@ -336,7 +340,11 @@
      <script>
         function removeOverlay() {
             document.getElementById("overlay").style.display = "none";
-            document.querySelector(".background-video").style.display = "block"; // Show the background video
+            var isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
+
+            if (!isMobile) {
+            document.querySelector(".background-video").style.display = "block"; // Show the background video on non-mobile devices
+             }
         }
 
         function playMusic() {
