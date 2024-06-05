@@ -225,6 +225,18 @@
             cursor: pointer;
             border-radius: 10px;
         }
+
+        /* View counter styles */
+        #view-counter {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -243,13 +255,11 @@
         <a href="https://cash.app/$AJames071123" class="cashapp-link"><i class="fa-solid fa-dollar-sign"></i></a>
     </div>
     
-    
     <div class="video-background">
         <video id="bg-video" autoplay muted loop class="background-video">
             <source src="car1.mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        
     </div>
 
     <audio loop id="bg-music">
@@ -259,6 +269,9 @@
     <div class="mute-button" onclick="toggleMute()">
         <i id="volumeIcon" class="fas fa-volume-up"></i>
     </div>
+
+    <div id="view-counter">Views: <span id="view-count">0</span></div> <!-- View counter div -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const textElement = document.getElementById('typewriter');
@@ -299,41 +312,12 @@
             if ((event.keyCode == 123) || (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == "S".charCodeAt(0)) || (e.ctrlKey && e.keyCode == "F".charCodeAt(0)) || (e.ctrlKey && e.keyCode == "P".charCodeAt(0)) || (e.ctrlKey && e.keyCode == "T".charCodeAt(0)) || (e.ctrlKey && e.keyCode == "N".charCodeAt(0)) || (e.ctrlKey && e.keyCode == "J".charCodeAt(0)) || (e.shiftKey && e.keyCode == "ESC".charCodeAt(0)) || (e.ctrlKey && e.ctrlKey && e.keyCode == "S".charCodeAt(0)) || (e.ctrlKey && e.keyCode == "U".charCodeAt(0))) {
                 alert("damn bro no!");
                 alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
-                alert("Don't ever try again");
                 return false;
             }
         }
     </script>
-     <script>
+
+    <script>
         function removeOverlay() {
             document.getElementById("overlay").style.display = "none";
             document.querySelector(".background-video").style.display = "block"; // Show the background video
@@ -373,6 +357,20 @@
                 index = (index + 1) % (originalTitle.length + 4);
                 document.title = originalTitle.substring(0, index);
             }, 300);
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateViewCount();
+        });
+
+        function updateViewCount() {
+            fetch('https://api.countapi.xyz/update/dasende.xyz/visitor/?amount=1')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('view-count').textContent = data.value;
+                });
         }
     </script>
 </body>
